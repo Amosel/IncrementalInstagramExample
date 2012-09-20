@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+[submodule "Lib/AFincrementalStore"]
+	path = Lib/AFincrementalStore
+	url = git@github.com:Amosel/AFIncrementalStore.git
+=======
+[submodule "AFNetworking"]
+	path = AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git
+>>>>>>> 46c0bd8d5d254a23be60792da00b3a730ac966e5

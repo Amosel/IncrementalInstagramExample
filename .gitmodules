@@ -1,0 +1,6 @@
+[submodule "Lib/AFincrementalStore"]
+	path = Lib/AFincrementalStore
+	url = git@github.com:Amosel/AFIncrementalStore.git
+[submodule "Lib/AFIncrementalStore"]
+	path = Lib/AFIncrementalStore
+	url = git@github.com:Amosel/AFIncrementalStore.git
