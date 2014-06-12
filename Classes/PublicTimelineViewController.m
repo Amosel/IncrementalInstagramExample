@@ -132,7 +132,7 @@
 {
     Picture* picture = [_fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
     PictureTableViewHeader* view = [[PictureTableViewHeader alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 20)];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.25];
     [view setPicture:picture];
     return view;
 }

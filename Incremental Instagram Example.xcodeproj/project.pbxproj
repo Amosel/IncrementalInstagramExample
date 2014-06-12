@@ -10,6 +10,7 @@
 		6C0EAD5F160AE8580053A7AC /* PictureTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0EAD5E160AE8580053A7AC /* PictureTableViewHeader.m */; };
 		6C1AC336194A324C007AD110 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B5C14160A3E900026BB88 /* Instagram.xcdatamodeld */; };
 		6C1AC339194A3357007AD110 /* NSObject+dispatch_thread_safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1AC338194A3357007AD110 /* NSObject+dispatch_thread_safe.m */; };
+		6C1AC33C194A56EF007AD110 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C1AC33B194A56EF007AD110 /* Storyboard.storyboard */; };
 		6C1B5C38160A6EEC0026BB88 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B5C37160A6EEC0026BB88 /* User.m */; };
 		6C1B5C3B160A6EEC0026BB88 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B5C3A160A6EEC0026BB88 /* Image.m */; };
 		6C1C4380160A937A00C1FBA0 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1C437F160A937A00C1FBA0 /* Picture.m */; };
@@ -52,6 +53,7 @@
 		6C1AC337194A3357007AD110 /* NSObject+dispatch_thread_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+dispatch_thread_safe.h"; sourceTree = "<group>"; };
 		6C1AC338194A3357007AD110 /* NSObject+dispatch_thread_safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+dispatch_thread_safe.m"; sourceTree = "<group>"; };
 		6C1AC33A194A34FA007AD110 /* AEWEAK_REF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEWEAK_REF.h; sourceTree = "<group>"; };
+		6C1AC33B194A56EF007AD110 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		6C1B5C15160A3E900026BB88 /* Instagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Instagram.xcdatamodel; sourceTree = "<group>"; };
 		6C1B5C1C160A555F0026BB88 /* PictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureTableViewCell.h; path = Classes/PictureTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		6C1B5C36160A6EEB0026BB88 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = modelFiles/User.h; sourceTree = SOURCE_ROOT; };
@@ -273,6 +275,7 @@
 		F8AFAFA215AB4F28003FE5BB = {
 			isa = PBXGroup;
 			children = (
+				6C1AC33B194A56EF007AD110 /* Storyboard.storyboard */,
 				6C1B5C14160A3E900026BB88 /* Instagram.xcdatamodeld */,
 				6C1B5BD9160A376E0026BB88 /* dependencies */,
 				F8AFAFB915AB4F28003FE5BB /* Instagram */,
@@ -380,6 +383,7 @@
 			files = (
 				F87CD19215DAB45100E4C166 /* profile-image-placeholder.png in Resources */,
 				F87CD19315DAB45100E4C166 /* profile-image-placeholder@2x.png in Resources */,
+				6C1AC33C194A56EF007AD110 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
