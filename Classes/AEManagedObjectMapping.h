@@ -51,7 +51,7 @@ typedef BOOL(^RWManagedObjectMappingSelector)(id obj, NSUInteger idx);
 - (void)mapAttribute:(NSString*)attributeKey withKeyPath:(NSString*)keypath;
 - (void)mapAttributesWithAttributesAndKeypaths:(id)firstKey, ...;
 
-- (void)addMappingBlock:(id (^)(id,NSDictionary*))block;
+- (void)addMappingBlock:(id (^)(NSDictionary*))block;
 
 -(NSDictionary*)attributesRepresentationFromDictioanry:(NSDictionary*)dictionary;
 

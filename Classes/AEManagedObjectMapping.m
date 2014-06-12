@@ -24,6 +24,7 @@
 // THE SOFTWARE.
 
 #import "AEManagedObjectMapping.h"
+#import "NSObject+dispatch_thread_safe.h"
 
 NSString*const kAEManagedObjectMappingTopLevel = @"kAEManagedObjectMappingTopLevel";
 
@@ -154,13 +155,16 @@ NSString*const kAEManagedObjectMappingTopLevel = @"kAEManagedObjectMappingTopLev
 
 - (void)addAttributeMapping:(NSString*)keyPath;
 {
-    NSMutableSet* kvoMappings = [[self attributeMappings] objectForKey:@"__KVO__"];
-    if (!kvoMappings) {
-        kvoMappings = [NSMutableSet new];
-        [[self attributeMappings] setObject:kvoMappings
-                                     forKey:@"__KVO__"];
-    }
+	[[self attributeMappings] dispatch_mutateWithBlock:^(id mutable) {
+		NSMutableSet* kvoMappings = [mutable objectForKey:@"__KVO__"];
+		if (!kvoMappings) {
+			kvoMappings = [NSMutableSet new];
+			[mutable setObject:kvoMappings
+									forKey:@"__KVO__"];
+		}
+		
     [kvoMappings addObject:keyPath];
+	}];
 }
 
 - (void)addAttributeMappings:(id)firstKey, ... {
@@ -174,14 +178,16 @@ NSString*const kAEManagedObjectMappingTopLevel = @"kAEManagedObjectMappingTopLev
 
 - (void)mapAttribute:(NSString*)attributeKey withKeyPath:(NSString*)keypath
 {
-    NSMutableSet* kvoMappings = [[self attributeMappings] objectForKey:@"__KVO_MAP__"];
-    if (!kvoMappings) {
-        kvoMappings = [NSMutableSet new];
-        [[self attributeMappings] setObject:kvoMappings
-                                     forKey:@"__KVO_MAP__"];
-    }
+	[[self attributeMappings] dispatch_mutateWithBlock:^(id mutable) {
+		NSMutableSet* kvoMappings = [mutable objectForKey:@"__KVO_MAP__"];
+		if (!kvoMappings) {
+			kvoMappings = [NSMutableSet new];
+			[mutable setObject:kvoMappings
+									forKey:@"__KVO_MAP__"];
+		}
     RWMappingPair* pair = [[RWMappingPair alloc] initWithAttribute:attributeKey keypath:keypath];
     [kvoMappings addObject:pair];
+	}];
 }
 
 - (void)mapAttributesWithAttributesAndKeypaths:(id)firstKey, ... {
@@ -194,15 +200,17 @@ NSString*const kAEManagedObjectMappingTopLevel = @"kAEManagedObjectMappingTopLev
     va_end(args);
 }
 
-- (void)addMappingBlock:(id (^)(id, NSDictionary*))block;
+- (void)addMappingBlock:(id (^)(NSDictionary*))block;
 {
-    NSMutableSet* blockMappings = [[self attributeMappings] objectForKey:@"__blocks__"];
+	[[self attributeMappings] dispatch_mutateWithBlock:^(id mutable) {
+    NSMutableSet* blockMappings = [mutable objectForKey:@"__blocks__"];
     if (!blockMappings) {
-        blockMappings = [NSMutableSet new];
-        [[self attributeMappings] setObject:blockMappings
-                                     forKey:@"__blocks__"];
+			blockMappings = [NSMutableSet new];
+			[[self attributeMappings] setObject:blockMappings
+																	 forKey:@"__blocks__"];
     }
-    [blockMappings addObject:block];
+		[blockMappings addObject:block];
+	}];
 }
 
 
@@ -260,25 +268,25 @@ NSString*const kAEManagedObjectMappingTopLevel = @"kAEManagedObjectMappingTopLev
 {
     NSMutableDictionary* results = [NSMutableDictionary dictionary];
     
-    [self.attributeMappings enumerateKeysAndObjectsUsingBlock:^(id key, NSMutableSet* set, BOOL *stop) {
+    [[self.attributeMappings dispatch_get] enumerateKeysAndObjectsUsingBlock:^(id key, NSMutableSet* set, BOOL *stop) {
         if ([key isEqualToString:@"__KVO__"]) {
-            [set enumerateObjectsUsingBlock:^(NSString* attributeKeypath, BOOL *stop) {
+            [[set dispatch_get] enumerateObjectsUsingBlock:^(NSString* attributeKeypath, BOOL *stop) {
                 [results setValue:[dictionary valueForKeyPath:attributeKeypath]
                        forKeyPath:attributeKeypath];
             }];
         }
         if ([key isEqualToString:@"__KVO_MAP__"]) {
-            [set enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+            [[set dispatch_get] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
                 NSAssert1([obj isKindOfClass:[RWMappingPair class]], @"object:%@ should with with class kind: RWMappingPair", obj);
                 RWMappingPair* pair = (RWMappingPair*)obj;
                 [results setValue:[dictionary valueForKeyPath:pair.keyPath]
                        forKeyPath:pair.attribute];
             }];
         }
-        if ([key isEqualToString:@"__blocks__"]) {
+        if ([[key dispatch_get] isEqualToString:@"__blocks__"]) {
             [set enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                id(^block)(id value) = obj;
-                NSDictionary*assignment = block(dictionary);
+                id(^block)(NSDictionary *dynamicContent) = obj;
+								NSDictionary*assignment = block(dictionary);
                 [results setValuesForKeysWithDictionary:assignment];
             }];
         }

@@ -40,12 +40,12 @@
                                                        primaryKey:@"id"
                                                           keypath:@"date"];
         
-        [_mapping addMappingBlock:^id(id value, NSDictionary *dynamicContent) {
+        [_mapping addMappingBlock:^id(NSDictionary *dynamicContent) {
             NSMutableDictionary* mutable = [NSMutableDictionary dictionary];
-            NSString* created_time = [value objectForKey:@"created_time"];
-            [mutable setObject:[NSDate dateWithTimeIntervalSince1970:[created_time doubleValue]]
-                        forKey:@"createdAt"];
-            return mutable;
+						NSString* created_time = [dynamicContent objectForKey:@"created_time"];
+						[mutable setObject:[NSDate dateWithTimeIntervalSince1970:[created_time doubleValue]]
+												forKey:@"createdAt"];
+						return mutable;
         }];
         [_mapping addAttributeMapping:@"id"];
         
@@ -67,15 +67,15 @@
                                                                       primaryKey:@"url"
                                                                          keypath:@"images"];
         
-        [imageMapping addMappingBlock:^id(id value, NSDictionary *dynamicContent) {
+        [imageMapping addMappingBlock:^id(NSDictionary *dynamicContent) {
             NSMutableDictionary* mutable = [NSMutableDictionary dictionary];
-            [mutable setValue:[NSNumber numberWithInteger:[[value valueForKey:@"height"] integerValue]]
+            [mutable setValue:[NSNumber numberWithInteger:[[dynamicContent valueForKey:@"height"] integerValue]]
                        forKey:@"height"];
-            [mutable setValue:[NSNumber numberWithInteger:[[value valueForKey:@"width"] integerValue]]
+            [mutable setValue:[NSNumber numberWithInteger:[[dynamicContent valueForKey:@"width"] integerValue]]
                        forKey:@"width"];
-            [mutable setValue:[value valueForKey:@"url"]
+            [mutable setValue:[dynamicContent valueForKey:@"url"]
                        forKey:@"url"];
-            [mutable setValue:[value valueForKey:kAEManagedObjectMappingTopLevel]
+            [mutable setValue:[dynamicContent valueForKey:kAEManagedObjectMappingTopLevel]
                        forKey:@"type"];
             return mutable;
         }];

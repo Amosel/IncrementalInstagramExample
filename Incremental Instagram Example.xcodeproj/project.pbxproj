@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6C0EAD5F160AE8580053A7AC /* PictureTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0EAD5E160AE8580053A7AC /* PictureTableViewHeader.m */; };
+		6C1AC336194A324C007AD110 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B5C14160A3E900026BB88 /* Instagram.xcdatamodeld */; };
+		6C1AC339194A3357007AD110 /* NSObject+dispatch_thread_safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1AC338194A3357007AD110 /* NSObject+dispatch_thread_safe.m */; };
 		6C1B5C38160A6EEC0026BB88 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B5C37160A6EEC0026BB88 /* User.m */; };
 		6C1B5C3B160A6EEC0026BB88 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B5C3A160A6EEC0026BB88 /* Image.m */; };
 		6C1C4380160A937A00C1FBA0 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1C437F160A937A00C1FBA0 /* Picture.m */; };
@@ -47,6 +49,9 @@
 /* Begin PBXFileReference section */
 		6C0EAD5D160AE8580053A7AC /* PictureTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureTableViewHeader.h; sourceTree = "<group>"; };
 		6C0EAD5E160AE8580053A7AC /* PictureTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureTableViewHeader.m; sourceTree = "<group>"; };
+		6C1AC337194A3357007AD110 /* NSObject+dispatch_thread_safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+dispatch_thread_safe.h"; sourceTree = "<group>"; };
+		6C1AC338194A3357007AD110 /* NSObject+dispatch_thread_safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+dispatch_thread_safe.m"; sourceTree = "<group>"; };
+		6C1AC33A194A34FA007AD110 /* AEWEAK_REF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEWEAK_REF.h; sourceTree = "<group>"; };
 		6C1B5C15160A3E900026BB88 /* Instagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Instagram.xcdatamodel; sourceTree = "<group>"; };
 		6C1B5C1C160A555F0026BB88 /* PictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureTableViewCell.h; path = Classes/PictureTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		6C1B5C36160A6EEB0026BB88 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = modelFiles/User.h; sourceTree = SOURCE_ROOT; };
@@ -197,6 +202,9 @@
 		E6C2080F15E5710500243D5D /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				6C1AC33A194A34FA007AD110 /* AEWEAK_REF.h */,
+				6C1AC337194A3357007AD110 /* NSObject+dispatch_thread_safe.h */,
+				6C1AC338194A3357007AD110 /* NSObject+dispatch_thread_safe.m */,
 				6C8B0EA2160AE7EC00372F11 /* UIColor+Hex.h */,
 				6C1C43EA160AE7B600C1FBA0 /* UIColor+Hex.m */,
 				6C1C43EB160AE7B600C1FBA0 /* UIColor+Three20.h */,
@@ -398,6 +406,8 @@
 				6C1C43C7160AE71200C1FBA0 /* AFHTTPClient.m in Sources */,
 				6C1C43C8160AE71200C1FBA0 /* AFHTTPRequestOperation.m in Sources */,
 				6C1C43C9160AE71200C1FBA0 /* AFImageRequestOperation.m in Sources */,
+				6C1AC339194A3357007AD110 /* NSObject+dispatch_thread_safe.m in Sources */,
+				6C1AC336194A324C007AD110 /* Instagram.xcdatamodeld in Sources */,
 				6C1C43CA160AE71200C1FBA0 /* AFJSONRequestOperation.m in Sources */,
 				6C1C43CB160AE71200C1FBA0 /* AFJSONUtilities.m in Sources */,
 				6C1C43CC160AE71200C1FBA0 /* AFNetworkActivityIndicatorManager.m in Sources */,
